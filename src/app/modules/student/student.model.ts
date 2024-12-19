@@ -34,11 +34,7 @@ const studentSchema = new Schema<Tstudent, StudentModel>({
     unique:true,
     ref:'User'
   },
-  // password: {
-  //   type: String,
-  //   required: [true, 'password is rquired'],
-  //   maxlength: [20, 'password cannot be more than 20 characters'],
-  // },
+ 
   name: { type: userNameSchema, required: true }, // Embedded schema
   gender: { type: String, enum: ['male', 'female'], required: true },
   dateOfBirth: { type: String, required: false }, // Optional field
@@ -56,7 +52,9 @@ const studentSchema = new Schema<Tstudent, StudentModel>({
   profileImg: { type: String, required: false }, // Optional field
   // isActive: { type: String, enum: ['active', 'inActive'], required: true },
   admissionSemester:{type:Schema.Types.ObjectId , ref: 'AcademicSemester'},
-  isDeleted: {type: Boolean, default: false}
+  isDeleted: {type: Boolean, default: false},
+  academicDepartment:{type:Schema.Types.ObjectId , ref: 'AcademicDepartment'},
+
 } ,
 {
   toJSON:{

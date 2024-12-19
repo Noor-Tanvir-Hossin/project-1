@@ -4,6 +4,8 @@ import { Schema, model } from "mongoose";
 // import config from "../../config";
 import { TAcademicSemester, TMonth } from "./academicSemester.interface";
 import { AcademicSemesterCode, AcademicSemesterName } from "./academicSemester.constant";
+import AppError from "../../errors/AppError";
+import { StatusCodes } from "http-status-codes";
 
 const months: TMonth[] = [
     "January", "February", "March", "April", 
@@ -51,7 +53,7 @@ academicSemesterSchema.pre('save', async function (next) {
     });
   
     if (isSemesterExists) {
-      throw new Error('Semester is already exists !');
+      throw new AppError(StatusCodes.BAD_REQUEST,'Semester is already exists !');
     }
     next();
   });

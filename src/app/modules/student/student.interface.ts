@@ -35,7 +35,8 @@ export type Tstudent= {
     profileImg?:string,
     admissionSemester:Types.ObjectId;
     // isActive: 'active' | "inActive",
-    isDeleted:boolean    
+    isDeleted:boolean ,
+    academicDepartment:Types.ObjectId;   
 }
 
 // for creating custom static
